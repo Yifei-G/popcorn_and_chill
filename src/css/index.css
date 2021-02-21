@@ -1,0 +1,16 @@
+.movie-container{
+    width: 200px;
+    height: 250px;
+    border: 1px solid black;
+    margin: 5px 20px 10px 0;
+    transition: all .4s ease-out;
+}
+
+.movie-container:hover{
+    transform: scale(1.05, 1.05) translateZ(0px) translate3d(0px, 0px, 0px);
+}
+.poster-container{
+    width: inherit;
+    height: inherit;
+}
+
