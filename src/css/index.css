@@ -10,7 +10,7 @@
     transform: scale(1.05, 1.05) translateZ(0px) translate3d(0px, 0px, 0px);
 }
 .poster-container{
-    width: inherit;
-    height: inherit;
+    width: 200px;
+    height: 250px;
 }
 

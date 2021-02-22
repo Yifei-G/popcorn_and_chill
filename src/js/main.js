@@ -1,7 +1,8 @@
+import {Constants} from "./constant.js";
 import Request from "./request.js";
-const basePath = "https://api.themoviedb.org/3/";
-const imgBasePath = "https://image.tmdb.org/t/p/w300/"
-const apiKey = "api_key=18ea9ff3cb40f35bd251e90c45e9033f";
+const baseURL = Constants.basePath;
+const apiKey = Constants.apiKey;
+const imgBasePath = "https://image.tmdb.org/t/p/w300/";
 let morePage = 11;
 let newRequestTimer = 10000;
 window.onload = function WindowLoad(event){
@@ -22,7 +23,7 @@ window.addEventListener("scroll", ()=>{
 
 async function getMovies(page){
     const request = new Request();
-    request.setBaseURL(basePath);
+    request.setBaseURL(baseURL);
     try{
         const data = await request.loadMovies(`movie/popular?${apiKey}&language=en-US&page=${page}`);
         //console.log(data);
@@ -37,11 +38,13 @@ async function getMovies(page){
 function displayMovies(movies){
     const parentContainer = document.querySelector("#movies");
     for(const movie of movies){
-        debugger;
-        const movieContainer = `<div class="movie-container">
+        //each movie contain is also a clicable link to redirect to the detail page
+        //let's generate the movie container div with the img element
+        const params = new URLSearchParams();
+        params.append("movieID", movie.id);
+        const movieContainer = `<a href="./detail.html?${params.toString()}"><div id="${movie.id}" class="movie-container">
         <img class="poster-container" src=${imgBasePath}${movie.poster_path}>
-        </div>`
-        //console.log(movie);
+        </div></a>`;
         parentContainer.insertAdjacentHTML("beforeend", movieContainer);
 
     }
