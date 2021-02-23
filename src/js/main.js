@@ -43,7 +43,7 @@ function displayMovies(movies){
         const params = new URLSearchParams();
         params.append("movieID", movie.id);
         const movieContainer = `<a href="./detail.html?${params.toString()}"><div id="${movie.id}" class="movie-container">
-        <img class="poster-container" src=${imgBasePath}${movie.poster_path}>
+        <img class="poster-container rounded rounded-3" src=${imgBasePath}${movie.poster_path}>
         </div></a>`;
         parentContainer.insertAdjacentHTML("beforeend", movieContainer);
 
