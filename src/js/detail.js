@@ -18,7 +18,10 @@ window.onload = function WindowLoad(event){
             const movieData = await request.loadMovies(`movie/${movieID}?${apiKey}&language=en-US`);
             const providerData = await request.loadMovies(`movie/${movieID}/watch/providers?${apiKey}`);
             console.log(providerData);
+            debugger;
             displayMovie(movieData);
+            
+            //we need at least 1 provider, empty results will not be displayed
             if(Object.keys(providerData.results).length > 0 && providerData.results.constructor === Object){
                 displayPlatforms(providerData.results);
             }
@@ -32,37 +35,25 @@ window.onload = function WindowLoad(event){
 
 function displayMovie(movie){
     const primaryCtn = document.querySelector(".primary-container");
-    debugger;
 
-    const colorThief = new ColorThief();
-    const img = new Image();
-    img.addEventListener('load', ()=>{
-        debugger;
-        const dominantColor = colorThief.getColor(img);
-        console.log(dominantColor);
-        const [r,g,b] = dominantColor;
-        const hsp = Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b));
-        primaryCtn.style.background = `linear-gradient(rgba(${r}, ${g}, ${b}, 0.7), rgba(255, 255, 255, 0.5)),url("${imgBackgrounPath}${movie.backdrop_path}")`;
-        primaryCtn.style.backgroundSize = `cover`;
-        primaryCtn.style.backgroundPosition = `45% 15%`;
-        (hsp>127.5)? primaryCtn.style.color="black" : primaryCtn.style.color="white";
-        // if (hsp>127.5){
-        //     console.log("light");
+    if(movie.backdrop_path){
+        const colorThief = new ColorThief();
+        const img = new Image();
+        img.addEventListener('load', ()=>{
+            const dominantColor = colorThief.getColor(img);
+            console.log(dominantColor);
+            const [r,g,b] = dominantColor;
+            const hsp = Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b));
+            primaryCtn.style.background = `linear-gradient(rgba(${r}, ${g}, ${b}, 0.7), rgba(255, 255, 255, 0.5)),url("${imgBackgrounPath}${movie.backdrop_path}")`;
+            primaryCtn.style.backgroundSize = `cover`;
+            primaryCtn.style.backgroundPosition = `45% 15%`;
+            (hsp>127.5)? primaryCtn.style.color="black" : primaryCtn.style.color="white"
+        });
+        const backgroundURL = `${imgBackgrounPath}${movie.backdrop_path}`;
+        img.crossOrigin = 'Anonymous';
+        img.src = backgroundURL;
+    }
 
-        // }
-        // else{
-        //     console.log('dark');
-        // }
-
-
-        
-    });
-
-    const backgroundURL = `${imgBackgrounPath}${movie.backdrop_path}`;
-    img.crossOrigin = 'Anonymous';
-    img.src = backgroundURL;
-
-    
 
 
     const posterCtn = document.querySelector(".detail-poster-container");
@@ -89,6 +80,10 @@ function displayMovie(movie){
     <h4 class="mb-3">Score: ${movie.vote_average}/10</h4>
     <p>Plot: ${movie.overview}</p>
     `
+
+    const loader = document.querySelector("#data-loader");
+        loader.classList.remove('d-inline-flex');
+        loader.classList.add('d-none');
     posterCtn.insertAdjacentHTML("beforeend", poster);
 
     infoCtn.insertAdjacentHTML("beforeend", primaryInfo);
