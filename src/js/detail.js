@@ -144,7 +144,7 @@ function displayVideos(videos){
     let carouselItem = "";
     const videoIndicators = document.querySelector("#video-indicators");
     const videoContainer = document.querySelector("#video-container");
-    for (let i = 0; i < videos.length ; i++){
+    for (let i = 0; i < 5 ; i++){
         if(videos[i].site === "YouTube"){
             fullPath = videoPath + videos[i].key;
         }
