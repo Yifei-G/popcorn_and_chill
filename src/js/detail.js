@@ -141,24 +141,27 @@ function displayPlatforms(providers){
 
 
 function displayVideos(videos){
-    let videoPath = "https://www.youtube.com/embed/";
+    let youtubePath = "https://www.youtube.com/embed/";
+    let vimeoPath = "https://player.vimeo.com/video/";
     let fullPath = "";
     let videoindicator = "";
     let carouselItem = "";
+    const mediaContainer = document.querySelector("#media-container");
     const videoIndicators = document.querySelector("#video-indicators");
     const videoContainer = document.querySelector("#video-container");
-    for (let i = 0; i < 5 ; i++){
-        if(videos[i].site === "YouTube"){
-            fullPath = videoPath + videos[i].key;
-        }
+    debugger;
+    for (let i = 0;(i < videos.length && i < 5); i++){
+        (videos[i].site === "YouTube") ? fullPath = youtubePath + videos[i].key : fullPath = vimeoPath + videos[i].key
         videoindicator = `<li data-target="#video-carousel" data-slide-to="${i}" class="${i == 0 ? `active` : ``} "></li>`;
-
         carouselItem = `<div class="carousel-item ${i == 0 ? `active` : ``}">
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe class="embed-responsive-item" src="${fullPath}" allowfullscreen></iframe>
-        </div>
-      </div>`
-        videoIndicators.insertAdjacentHTML("beforeend", videoindicator);
-        videoContainer.insertAdjacentHTML("beforeend",carouselItem);
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="${fullPath}" allowfullscreen></iframe>
+            </div>
+          </div>`
+          videoIndicators.insertAdjacentHTML("beforeend", videoindicator);
+          videoContainer.insertAdjacentHTML("beforeend",carouselItem);
     }
+
+    mediaContainer.classList.remove("d-none");
+    mediaContainer.classList.add("d-flex");
 }
