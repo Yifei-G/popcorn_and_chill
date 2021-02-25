@@ -25,3 +25,26 @@
 .loading{
     font-size: 40px;
 }
+
+.carousel-indicators{
+    position: static;
+}
+.carousel-indicators li{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.carousel-control-prev{
+    left: -120px;
+}
+
+.carousel-control-next{
+    right:-120px;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon{
+    width:30px;
+    height:30px;
+}
