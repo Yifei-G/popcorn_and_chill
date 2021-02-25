@@ -25,7 +25,7 @@ async function getMovies(page){
     const request = new Request();
     request.setBaseURL(baseURL);
     try{
-        const data = await request.loadMovies(`movie/popular?${apiKey}&language=en-US&page=${page}`);
+        const data = await request.loadData(`movie/popular?${apiKey}&language=en-US&page=${page}`);
         //console.log(data);
 
         //all the movies are saved at results

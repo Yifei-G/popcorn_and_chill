@@ -7,7 +7,7 @@ export default class Request {
         this.baseURL = baseURL;
     }
     
-    async loadMovies(relativeURL){
+    async loadData(relativeURL){
         const URL = this.baseURL + relativeURL;
         const response = await fetch(URL);
         return response.json();

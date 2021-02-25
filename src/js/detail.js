@@ -15,16 +15,25 @@ window.onload = function WindowLoad(event){
         const request = new Request();
         request.setBaseURL(baseURL);
         try{
-            const movieData = await request.loadMovies(`movie/${movieID}?${apiKey}&language=en-US`);
-            const providerData = await request.loadMovies(`movie/${movieID}/watch/providers?${apiKey}`);
+            //getting the movie details
+            const movieData = await request.loadData(`movie/${movieID}?${apiKey}&language=en-US`);
+            //getting the movie provider
+            const providerData = await request.loadData(`movie/${movieID}/watch/providers?${apiKey}`);
+            //getting the movie trailer
+            const videoData = await request.loadData(`movie/${movieID}/videos?${apiKey}&language=en-US`);
             console.log(providerData);
             debugger;
+            console.log(videoData)
             displayMovie(movieData);
             
             //we need at least 1 provider, empty results will not be displayed
             if(Object.keys(providerData.results).length > 0 && providerData.results.constructor === Object){
                 displayPlatforms(providerData.results);
             }
+            if(videoData.results.length > 0){
+                displayVideos(videoData.results);
+            }
+
             
         }   catch(error){
             console.log(error);
@@ -43,10 +52,13 @@ function displayMovie(movie){
             const dominantColor = colorThief.getColor(img);
             console.log(dominantColor);
             const [r,g,b] = dominantColor;
+            //we calculate if the backgound image is dark or light
             const hsp = Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b));
+            //let's generate the background image with a blur effect
             primaryCtn.style.background = `linear-gradient(rgba(${r}, ${g}, ${b}, 0.7), rgba(255, 255, 255, 0.5)),url("${imgBackgrounPath}${movie.backdrop_path}")`;
             primaryCtn.style.backgroundSize = `cover`;
             primaryCtn.style.backgroundPosition = `45% 15%`;
+            // the text color should be contrast than the background image's primary color
             (hsp>127.5)? primaryCtn.style.color="black" : primaryCtn.style.color="white"
         });
         const backgroundURL = `${imgBackgrounPath}${movie.backdrop_path}`;
@@ -82,20 +94,22 @@ function displayMovie(movie){
     `
 
     const loader = document.querySelector("#data-loader");
-        loader.classList.remove('d-inline-flex');
-        loader.classList.add('d-none');
+    loader.classList.remove('d-inline-flex');
+    loader.classList.add('d-none');
     posterCtn.insertAdjacentHTML("beforeend", poster);
 
     infoCtn.insertAdjacentHTML("beforeend", primaryInfo);
 }
 
 function displayPlatforms(providers){
-    const platformContainer = `<div class="platform-container d-flex-block flex-wrap border border-danger" ></div>`;
+    const platformContainer = `<div class="platform-container d-flex-block flex-wrap" ></div>`;
     const infoCtn = document.querySelector(".info-container");
     infoCtn.insertAdjacentHTML("beforeend", platformContainer);
     const platformTitle = `<h2>Watch Now:</h2>`;
     const platformCtn = document.querySelector(".platform-container");
     platformCtn.insertAdjacentHTML("beforeend", platformTitle);
+
+    //providers are based on countries, we are only focused in US
     if(providers.US){
         if(providers.US.rent){
             const rentTitle = `<h3 class="mx-2">Buy:</h3>`;
@@ -120,4 +134,38 @@ function displayPlatforms(providers){
         platformCtn.insertAdjacentHTML("beforeend", noPlatforms);
     }
 
+}
+
+
+function displayVideos(videos){
+    let videoPath = "https://www.youtube.com/embed/";
+    let fullPath = "";
+    let videoindicator = "";
+    let carouselItem = "";
+    const videoIndicators = document.querySelector("#video-indicators");
+    const videoContainer = document.querySelector("#video-container");
+    for (let i = 0; i < videos.length ; i++){
+        if(videos[i].site === "YouTube"){
+            fullPath = videoPath + videos[i].key;
+        }
+        if(i == 0){
+            videoindicator = `<li data-target="#video-carousel" data-slide-to="${i}" class="active"></li>`;
+            carouselItem = `<div class="carousel-item active">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="${fullPath}" allowfullscreen></iframe>
+            </div>
+          </div>`
+
+        }
+        else{
+            videoindicator = `<li data-target="#video-carousel" data-slide-to="${i}"></li>`;
+            carouselItem = `<div class="carousel-item">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="${fullPath}" allowfullscreen></iframe>
+            </div>
+          </div>`
+        }
+        videoIndicators.insertAdjacentHTML("beforeend", videoindicator);
+        videoContainer.insertAdjacentHTML("beforeend",carouselItem);
+    }
 }
