@@ -59,7 +59,7 @@ function displayMovie(movie){
             primaryCtn.style.backgroundSize = `cover`;
             primaryCtn.style.backgroundPosition = `45% 15%`;
             // the text color should be contrast than the background image's primary color
-            (hsp>127.5)? primaryCtn.style.color="black" : primaryCtn.style.color="white"
+            (hsp>127.5)? primaryCtn.style.color="black" : primaryCtn.style.color="snow"
         });
         const backgroundURL = `${imgBackgrounPath}${movie.backdrop_path}`;
         img.crossOrigin = 'Anonymous';
@@ -88,8 +88,11 @@ function displayMovie(movie){
         movieTitle = `<h2>Title: ${movie.title} (${movie.original_title})</h2>`;
     }
     const primaryInfo = `${movieTitle}
+    ${movie.runtime != 0 ? `<h4>Duration: ${movie.runtime} Minutes</h4>` : ``}
+    <h4>Status:${movie.status}</h4>
+    ${movie.release_date ? `<h4>Release Date: ${movie.release_date}</h4>`: `<h4>Release Date: Coming Soon</h4>`}
+    <h4>Score: ${movie.status === "Released" ? `${movie.vote_average}/10` : `NR` } </h4>
     <h3>Type: ${movieType}</h3>
-    <h4 class="mb-3">Score: ${movie.vote_average}/10</h4>
     <p>Plot: ${movie.overview}</p>
     `
 
@@ -148,23 +151,13 @@ function displayVideos(videos){
         if(videos[i].site === "YouTube"){
             fullPath = videoPath + videos[i].key;
         }
-        if(i == 0){
-            videoindicator = `<li data-target="#video-carousel" data-slide-to="${i}" class="active"></li>`;
-            carouselItem = `<div class="carousel-item active">
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="${fullPath}" allowfullscreen></iframe>
-            </div>
-          </div>`
+        videoindicator = `<li data-target="#video-carousel" data-slide-to="${i}" class="${i == 0 ? `active` : ``} "></li>`;
 
-        }
-        else{
-            videoindicator = `<li data-target="#video-carousel" data-slide-to="${i}"></li>`;
-            carouselItem = `<div class="carousel-item">
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="${fullPath}" allowfullscreen></iframe>
-            </div>
-          </div>`
-        }
+        carouselItem = `<div class="carousel-item ${i == 0 ? `active` : ``}">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="${fullPath}" allowfullscreen></iframe>
+        </div>
+      </div>`
         videoIndicators.insertAdjacentHTML("beforeend", videoindicator);
         videoContainer.insertAdjacentHTML("beforeend",carouselItem);
     }
