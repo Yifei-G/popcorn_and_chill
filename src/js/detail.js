@@ -1,5 +1,6 @@
 import ColorThief from '../../node_modules/colorthief/dist/color-thief.mjs'
 import {Constants} from "./constant.js";
+import {displayMovies} from "./utils.js";
 import Request from "./request.js";
 const baseURL = Constants.basePath;
 const apiKey = Constants.apiKey;
@@ -9,7 +10,6 @@ const imgBackgrounPath = "https://image.tmdb.org/t/p/original/";
 window.onload = function WindowLoad(event){
     const params = new URLSearchParams(window.location.search),
     movieID = params.get("movieID");
-    console.log(movieID);
 
     async function getMovieDetail(){
         const request = new Request();
@@ -21,9 +21,11 @@ window.onload = function WindowLoad(event){
             const providerData = await request.loadData(`movie/${movieID}/watch/providers?${apiKey}`);
             //getting the movie trailer
             const videoData = await request.loadData(`movie/${movieID}/videos?${apiKey}&language=en-US`);
+            //getting the all the similar movies
+            const similarMovies = await request.loadData(`movie/${movieID}/similar?${apiKey}&language=en-US&page=1`)
             console.log(providerData);
-            debugger;
-            console.log(videoData)
+            console.log(videoData);
+            console.log(similarMovies);
             displayMovie(movieData);
             
             //we need at least 1 provider, empty results will not be displayed
@@ -32,6 +34,10 @@ window.onload = function WindowLoad(event){
             }
             if(videoData.results.length > 0){
                 displayVideos(videoData.results);
+            }
+
+            if(similarMovies.results.length > 0){
+                displayMovies(similarMovies.results, "similar-movies");
             }
 
             
@@ -70,7 +76,7 @@ function displayMovie(movie){
 
     const posterCtn = document.querySelector(".detail-poster-container");
     const infoCtn = document.querySelector(".info-container");
-    const poster = `<img src=${imgBasePath}${movie.poster_path}>`;
+    const poster = `<img class="mr-5" alt="movie poster cover" src=${imgBasePath}${movie.poster_path}>`;
     let movieType = "";
     movie.genres.forEach(genre =>{
         if(movie.genres.length > 1){
@@ -118,7 +124,7 @@ function displayPlatforms(providers){
             const rentTitle = `<h3 class="mx-2">Buy:</h3>`;
             platformCtn.insertAdjacentHTML("beforeend", rentTitle);
             for(const rentPlatform of providers.US.rent){
-                const platformLogo = `<img class="mx-2 rounded rounded-3" src="${logoBasePath}${rentPlatform.logo_path}">`
+                const platformLogo = `<img class="mx-2 rounded rounded-3" src="${logoBasePath}${rentPlatform.logo_path}" alt="platform logo">`
                 platformCtn.insertAdjacentHTML("beforeend", platformLogo);
             }
     
@@ -127,7 +133,7 @@ function displayPlatforms(providers){
             const streamTitle = `<h3 class="mx-2 my-3">Stream:</h3>`;
             platformCtn.insertAdjacentHTML("beforeend", streamTitle);
             for(const steamPlatform of providers.US.flatrate){
-                const platformLogo = `<img class="mx-2 rounded rounded-3" src="${logoBasePath}${steamPlatform.logo_path}">`
+                const platformLogo = `<img class="mx-2 rounded rounded-3" src="${logoBasePath}${steamPlatform.logo_path}" alt="platform logo">`
                 platformCtn.insertAdjacentHTML("beforeend", platformLogo);
             }
         }

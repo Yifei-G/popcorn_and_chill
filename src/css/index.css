@@ -1,7 +1,6 @@
 .movie-container{
     width: 200px;
     height: 250px;
-    /* border: 1px solid black; */
     margin: 5px 20px 10px 0;
     transition: all .4s ease-out;
 }
@@ -16,9 +15,6 @@
 
 .detail-poster-container img{
     height: 100%;
-}
-.info-container{
-    padding: 0px 37px
 }
 
 .spinner-loader{
@@ -50,4 +46,8 @@
 .carousel-control-prev-icon, .carousel-control-next-icon{
     width:30px;
     height:30px;
+}
+
+.similar-movies-container{
+    overflow: scroll;
 }

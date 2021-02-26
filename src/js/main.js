@@ -1,8 +1,8 @@
 import {Constants} from "./constant.js";
+import {displayMovies} from "./utils.js";
 import Request from "./request.js";
 const baseURL = Constants.basePath;
 const apiKey = Constants.apiKey;
-const imgBasePath = "https://image.tmdb.org/t/p/w300/";
 let morePage = 11;
 let newRequestTimer = 10000;
 window.onload = function WindowLoad(event){
@@ -29,24 +29,8 @@ async function getMovies(page){
         //console.log(data);
 
         //all the movies are saved at results
-        displayMovies(data.results);
+        displayMovies(data.results, "movies");
     }   catch(error){
         console.log(error);
     }
-}
-
-function displayMovies(movies){
-    const parentContainer = document.querySelector("#movies");
-    for(const movie of movies){
-        //each movie contain is also a clicable link to redirect to the detail page
-        //let's generate the movie container div with the img element
-        const params = new URLSearchParams();
-        params.append("movieID", movie.id);
-        const movieContainer = `<a href="./detail.html?${params.toString()}"><div id="${movie.id}" class="movie-container">
-        <img class="poster-container rounded rounded-3" src=${imgBasePath}${movie.poster_path}>
-        </div></a>`;
-        parentContainer.insertAdjacentHTML("beforeend", movieContainer);
-
-    }
-
 }
