@@ -9,8 +9,13 @@ export default class Request {
     
     async loadData(relativeURL){
         const URL = this.baseURL + relativeURL;
-        const response = await fetch(URL);
-        return response.json();
+        try{
+            const response = await fetch(URL);
+            return response.json();
+        }catch (error){
+            console.log(error);
+        }
+
     }
 
 }

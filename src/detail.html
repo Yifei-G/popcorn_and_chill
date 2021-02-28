@@ -22,8 +22,8 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+          <input id="user-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button id="search" class="btn btn-outline-danger my-2 my-sm-0" data-toggle="modal" data-target="#searchModal" type="submit">Search</button>
         </form>
       </div>
     </nav>
@@ -32,6 +32,23 @@
   
   <main>
     <section class="container-fluid">
+      <!-- Search result modal -->
+      <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollables">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="searchModalLabel">Search Result:</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div id="search-result" class="modal-body d-flex flex-wrap justify-content-center">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <!--Info section -->
       <div class="row mb-3">
         <div id="data-loader" class="d-inline-flex m-auto p-5">
@@ -89,16 +106,16 @@
           <!--photo tab-->
           <div class="tab-pane fade" id="photo" role="tabpanel" aria-labelledby="photo-tab">
             <p>This should be a photo carousel</p>
+          </div>
         </div>
       </div>
-      </div>
-  
+      
       <!--Similar movie section -->
       <div class="row similar-movies-container">
-          <h4>You might also like:</h4>
-          <div id="similar-movies" class="col-12 d-flex w-100">
-
-          </div>
+        <h4>You might also like:</h4>
+        <div id="similar-movies" class="col-12 d-flex w-100">
+          
+        </div>
       </div>
     </section>
   </main>
@@ -107,4 +124,5 @@
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="../node_modules/bootstrap/js/dist/util.js"></script>
 <script src="./js/detail.js" type="module"></script>
+<script src="./js/search.js" type="module"></script>
 </html>
