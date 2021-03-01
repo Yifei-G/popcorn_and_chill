@@ -34,7 +34,7 @@
       <div class="row">
         <!-- Search result modal -->
         <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-xl modal-dialog-scrollables">
+          <div class="modal-dialog modal-xl modal-dialog-scrollable">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="searchModalLabel">Search Result:</h5>
@@ -43,7 +43,10 @@
                 </button>
               </div>
               <div id="search-result" class="modal-body d-flex flex-wrap justify-content-center">
-                
+<!-- 
+                <div id="modal-scroll-down-container" class="scroll-down-container">
+                  <a id="modal-scroll-down-anchor"><span></span><span></span><span></span></a>
+                </div> -->
               </div>
             </div>
           </div>
@@ -54,7 +57,7 @@
           
         </div>
 
-        <div id="scroll-down-container">
+        <div id="scroll-down-container" class="scroll-down-container">
           <a id="scroll-down-anchor"><span></span><span></span><span></span></a>
         </div>
       </div>

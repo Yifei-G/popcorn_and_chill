@@ -12,7 +12,6 @@ window.onload = function WindowLoad(event){
 }
 
 scrollDownEl.addEventListener("click", ()=>{
-    console.log("clicked!!");
     window.scrollBy({
         top: 450,
         behavior: 'smooth'
