@@ -1,6 +1,9 @@
+
+section{
+  overflow-x: hidden;
+}
+
 .movie-container{
-    width: 200px;
-    height: 250px;
     margin: 5px 20px 10px 0;
     transition: all .4s ease-out;
 }
@@ -8,10 +11,10 @@
 .movie-container:hover{
     transform: scale(1.05, 1.05) translateZ(0px) translate3d(0px, 0px, 0px);
 }
-.poster-container{
-    width: 200px;
-    height: 250px;
-}
+
+ .detail-poster-container{
+   height: 100%;
+ }
 
 .detail-poster-container img{
     height: 100%;
@@ -126,5 +129,17 @@
     100% {
       transform: rotate(-45deg) translate(-20px, 20px);
       opacity: 0;
+    }
+  }
+
+  @media only screen and (max-width:992px){
+
+    .primary-container{
+      flex-direction: column-reverse;
+    }
+
+    .detail-poster-container img{
+      height: auto;
+      width: 100%;
     }
   }
