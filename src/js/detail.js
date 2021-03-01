@@ -32,11 +32,14 @@ window.onload = function WindowLoad(event){
             if(Object.keys(providerData.results).length > 0 && providerData.results.constructor === Object){
                 displayPlatforms(providerData.results);
             }
+
             if(videoData.results.length > 0){
                 displayVideos(videoData.results);
             }
 
             if(similarMovies.results.length > 0){
+                const similarMoviesCtn = document.querySelector(".similar-movies-container");
+                similarMoviesCtn.classList.remove("d-none");
                 displayMovies(similarMovies.results, "similar-movies");
             }
 
@@ -61,7 +64,7 @@ function displayMovie(movie){
             //we calculate if the backgound image is dark or light
             const hsp = Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b));
             //let's generate the background image with a blur effect
-            primaryCtn.style.background = `linear-gradient(rgba(${r}, ${g}, ${b}, 0.7), rgba(255, 255, 255, 0.5)),url("${imgBackgrounPath}${movie.backdrop_path}")`;
+            primaryCtn.style.background = `linear-gradient(rgba(${r}, ${g}, ${b}, 0.7), rgba(255, 255, 255, 0.35)),url("${imgBackgrounPath}${movie.backdrop_path}")`;
             primaryCtn.style.backgroundSize = `cover`;
             primaryCtn.style.backgroundPosition = `45% 15%`;
             // the text color should be contrast than the background image's primary color
@@ -76,7 +79,7 @@ function displayMovie(movie){
 
     const posterCtn = document.querySelector(".detail-poster-container");
     const infoCtn = document.querySelector(".info-container");
-    const poster = `<img class="mr-5" alt="movie poster cover" src=${imgBasePath}${movie.poster_path}>`;
+    const poster = `<img class="" alt="movie poster cover" src=${imgBasePath}${movie.poster_path}>`;
     let movieType = "";
     movie.genres.forEach(genre =>{
         if(movie.genres.length > 1){

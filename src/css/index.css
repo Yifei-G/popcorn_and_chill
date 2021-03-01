@@ -55,7 +55,14 @@ section{
     overflow: scroll;
 }
 
-#scroll-down-container a{
+.scroll-down-container{
+    position: sticky;
+    right: 50%;
+    bottom:100px;
+    width: 100%;
+}
+
+.scroll-down-container a{
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -71,15 +78,15 @@ section{
     cursor: pointer;
 }
 
-#scroll-down-container a span {
+.scroll-down-container a span {
     position: absolute;
     top: 0;
     left: 50%;
-    width: 24px;
-    height: 24px;
+    width: 35px;
+    height: 35px;
     margin-left: -12px;
-    border-left: 1px solid rgb(219, 55, 55);
-    border-bottom: 1px solid rgb(201, 45, 45);
+    border-left: 4px solid rgb(219, 55, 55);
+    border-bottom: 4px solid rgb(201, 45, 45);
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
     -webkit-animation: scroll-down-animation 2s infinite;
@@ -89,16 +96,16 @@ section{
     cursor: pointer;
 }
 
-#scroll-down-container a span:nth-of-type(1) {
+.scroll-down-container a span:nth-of-type(1) {
     -webkit-animation-delay: 0s;
     animation-delay: 0s;
   }
-  #scroll-down-container a span:nth-of-type(2) {
+  .scroll-down-container a span:nth-of-type(2) {
     top: 16px;
     -webkit-animation-delay: .15s;
     animation-delay: .15s;
   }
-  #scroll-down-container a span:nth-of-type(3) {
+  .scroll-down-container a span:nth-of-type(3) {
     top: 32px;
     -webkit-animation-delay: .3s;
     animation-delay: .3s;
