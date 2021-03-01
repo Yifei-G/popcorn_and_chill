@@ -2,7 +2,7 @@ function displayMovies(movies, containerID){
     const coverImgPath = "https://image.tmdb.org/t/p/w300/";
     const targetContainer = document.querySelector(`#${containerID}`);
     for(const movie of movies){
-        //each movie contain is also a clicable link to redirect to the detail page
+        //each movie is also a clicable link to redirect to the detail page
         //let's generate the movie container div with the img element
         //we don't display movies without a poster
         if(movie.poster_path){
