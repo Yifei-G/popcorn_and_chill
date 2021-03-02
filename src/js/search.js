@@ -30,6 +30,7 @@ async function searchMovies(name){
     try{
         const data = await request.loadData(`search/movie?${apiKey}&query=${name}&page=${morePage}`);
         //all the movies are saved at results
+        debugger;
         pageLimit = data.total_pages;
         if(data.total_pages > 1){
             morePage++

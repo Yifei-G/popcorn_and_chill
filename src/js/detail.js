@@ -6,6 +6,7 @@ const baseURL = Constants.basePath;
 const apiKey = Constants.apiKey;
 const imgBasePath = "https://image.tmdb.org/t/p/w342/";
 const logoBasePath = "https://image.tmdb.org/t/p/w45/";
+const mediaImgPath = "https://image.tmdb.org/t/p/w500/";
 const imgBackgrounPath = "https://image.tmdb.org/t/p/original/";
 window.onload = function WindowLoad(event){
     const params = new URLSearchParams(window.location.search),
@@ -21,6 +22,11 @@ window.onload = function WindowLoad(event){
             const providerData = await request.loadData(`movie/${movieID}/watch/providers?${apiKey}`);
             //getting the movie trailer
             const videoData = await request.loadData(`movie/${movieID}/videos?${apiKey}&language=en-US`);
+            //getting the posters
+            const imgData = await request.loadData(`movie/${movieID}/images?${apiKey}&include_image_language=en,null`);
+
+            debugger;
+
             //getting the all the similar movies
             const similarMovies = await request.loadData(`movie/${movieID}/similar?${apiKey}&language=en-US&page=1`)
             console.log(providerData);
@@ -35,6 +41,10 @@ window.onload = function WindowLoad(event){
 
             if(videoData.results.length > 0){
                 displayVideos(videoData.results);
+            }
+
+            if(imgData.posters.length > 0){
+                displayPhotos(imgData.posters);
             }
 
             if(similarMovies.results.length > 0){
@@ -172,4 +182,21 @@ function displayVideos(videos){
 
     mediaContainer.classList.remove("d-none");
     mediaContainer.classList.add("d-flex");
+}
+
+function displayPhotos(posters){
+    let photoIndicator = "";
+    let carouselItem = "";
+    const mediaContainer = document.querySelector("#media-container");
+    const photoIndicators = document.querySelector("#photo-indicators");
+    const photoContainer = document.querySelector("#photo-container");
+    for(let i = 0; (i<posters.length && i < 5); i++){
+        photoIndicator = `<li data-target="#photo-carousel" data-slide-to="${i}" class="${i == 0 ? `active` : ``} carousel-indicators-color "></li>`;
+        carouselItem = `<div class="carousel-item ${i == 0 ? `active` : ``}">
+        <img src="${mediaImgPath}${posters[i].file_path}" class="d-block m-auto" alt="movie poster">
+      </div>`;
+      photoIndicators.insertAdjacentHTML("beforeend", photoIndicator);
+      photoContainer.insertAdjacentHTML("beforeend", carouselItem);
+    }
+
 }
