@@ -11,9 +11,18 @@ let searchModal = document.querySelector("#search-result");
 let morePage = 1
 let pageLimit = 0;
 let sanitizedInput = "";
+userInput.addEventListener("keyup", ()=>{
+    userInput.value ? search.disabled = false : search.disabled = true;
+});
+
+userInput.addEventListener("click", ()=>{
+    console.log("clicked the input!!!")
+})
+
+
+
 search.addEventListener("click",(event)=>{
     //we don't want the page got reloaded after user clicks the button
-    debugger;
     event.preventDefault();
     morePage = 1;
     searchModal.innerHTML = "";
@@ -28,11 +37,18 @@ async function searchMovies(name){
     try{
         const data = await request.loadData(`search/movie?${apiKey}&query=${name}&page=${morePage}`);
         //all the movies are saved at results
+        debugger;
         pageLimit = data.total_pages;
         if(data.total_pages > 1){
             morePage++
         }
-        displayMovies(data.results, "search-result");
+        if(data.results.length > 0){
+            displayMovies(data.results, "search-result");
+        }else{
+            const noResults = `<h3>Sorry, we didn't find anything</h3>`;
+            searchModal.insertAdjacentHTML("beforeend", noResults);
+        }
+        
     }   catch(error){
         console.log(error);
     }

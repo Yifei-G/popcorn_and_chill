@@ -135,3 +135,36 @@
       opacity: 0;
     }
   }
+
+  @media only screen and (max-width:992px){
+
+    .primary-container{
+      flex-direction: column-reverse;
+    }
+
+    .detail-poster-container img{
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  .search-input{
+      background-color: transparent;
+      width: 350px !important;
+  }
+
+  .search-input:focus{
+      background-color: transparent;
+  }
+
+  .search-input:active{
+      background-color: transparent;
+  }
+
+  .form-control:focus{
+      color:snow;
+  }
+
+  input:-internal-autofill-selected{
+      background-color: transparent !important; 
+  }
