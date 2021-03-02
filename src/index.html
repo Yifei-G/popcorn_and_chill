@@ -10,16 +10,16 @@
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-      <a class="navbar-brand" href="#"><img src="/popcorn.png" height="100"></a>
+    <nav class="navbar navbar-expand-lg navbar-light primary-background">
+      <a class="navbar-brand" href="#"><img src="./assets/img/popcorn.png" height="60"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link text-light" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-link text-light" href="./about.html">About Us</a>
+            <a class="nav-link menu-item" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link menu-item" href="./about.html">About Us</a>
           </li>
         </ul>
         <form class="form-inline my-lg-0 m-auto">
@@ -31,7 +31,7 @@
   </header>
   
   <main>
-    <section class="container-fluid">
+    <section class="container-fluid primary-background">
       <div class="row">
         <!-- Search result modal -->
         <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
@@ -44,10 +44,7 @@
                 </button>
               </div>
               <div id="search-result" class="modal-body d-flex flex-wrap justify-content-center">
-<!-- 
-                <div id="modal-scroll-down-container" class="scroll-down-container">
-                  <a id="modal-scroll-down-anchor"><span></span><span></span><span></span></a>
-                </div> -->
+
               </div>
             </div>
           </div>
@@ -58,6 +55,7 @@
           
         </div>
 
+        <!--Scroll down componnet-->
         <div id="scroll-down-container" class="scroll-down-container">
           <a id="scroll-down-anchor"><span></span><span></span><span></span></a>
         </div>

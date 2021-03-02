@@ -158,10 +158,9 @@ function displayVideos(videos){
     const mediaContainer = document.querySelector("#media-container");
     const videoIndicators = document.querySelector("#video-indicators");
     const videoContainer = document.querySelector("#video-container");
-    debugger;
     for (let i = 0;(i < videos.length && i < 5); i++){
         (videos[i].site === "YouTube") ? fullPath = youtubePath + videos[i].key : fullPath = vimeoPath + videos[i].key
-        videoindicator = `<li data-target="#video-carousel" data-slide-to="${i}" class="${i == 0 ? `active` : ``} "></li>`;
+        videoindicator = `<li data-target="#video-carousel" data-slide-to="${i}" class="${i == 0 ? `active` : ``} carousel-indicators-color "></li>`;
         carouselItem = `<div class="carousel-item ${i == 0 ? `active` : ``}">
             <div class="embed-responsive embed-responsive-16by9">
               <iframe class="embed-responsive-item" src="${fullPath}" allowfullscreen></iframe>

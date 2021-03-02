@@ -8,18 +8,18 @@
     <link href="./css/index.css" rel="stylesheet" type="text/css">
     <title>Popcorn and Chill</title>
 </head>
-<body>
+<body class="primary-background">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-          <a class="navbar-brand" href="#"><img src="/popcorn.png" height="100"></a>
+        <nav class="navbar navbar-expand-lg navbar-light primary-background">
+          <a class="navbar-brand" href="#"><img src="./assets/img/popcorn.png" height="60"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
               <li class="nav-item active">
-                <a class="nav-link text-light" href="./index.html">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-link text-light" href="#">About Us</a>
+                <a class="nav-link menu-item" href="./index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link menu-item" href="#">About Us</a>
               </li>
             </ul>
           </div>
@@ -33,15 +33,15 @@
               <img src="./assets/img/deadpool.png">
           </div>
       </section>
-      <section id="about-us-text">
+      <section id="about-us-text" class="primary-background">
         <div id="text-container" class="row mx-auto mt-3">
-            <h1 class="d-block text-center">About Popcorn&Chill</h1>
-            <div>
-                <p>
+            <h1 class="d-block text-center text-title">About Popcorn&Chill</h1>
+            <div class="mb-5">
+                <p class="text-light">
                     Boring weekends during the quarantine? You have no plans but staying at home? Then Popcorn&Chill might change this situation!!! Popcorn&Chill is a web page where you can find all the popular movies. You can read the plot and watch the trailers. It also shows you which digital platform the movie is available.
                     So... What are you wating for? Buy some popcorns, find your favourite movie and relax on your sofa this weekend!
                 </p>
-                <p>
+                <p class="text-light">
                     This is the final project of Bit Academy Front-end bootcamp. This project is built using the following technology:
                 </p>
                 <div id="logo-container" class="text-center my-4">
@@ -51,30 +51,30 @@
                     <img class="mr-5" src="./assets/img/github.svg">
                 </div>
             </div>
-            <h1 class="d-block text-center">Special Credits:</h1>
-            <div>
-                <p>
+            <h1 class="d-block text-center text-title">Special Credits:</h1>
+            <div class="mb-5">
+                <p class="text-light">
                     We are extremely greatful of The Movie DataBase API (TMDB API), without it this project won't be possible. 
                 </p>
-                <p>
-                    TMDB api is user friendly with all detailed documentation of all the end points. We strongly recommend you use this api for your front-end projects.
+                <p class="text-light">
+                    TMDB API is user friendly with all detailed documentation of all the end points. We strongly recommend you use this API for your front-end projects.
                 </p>
-                <p>
+                <p class="text-light">
                     You can check the API <a href="https://developers.themoviedb.org/3/getting-started/introduction" target="_blank">here</a>
                 </p>
             </div>
         </div>
       </section>
 
-      <section id="about-us-backers">
+      <section id="about-us-backers" class="primary-background">
           <div id="backer-container" class="row mx-auto mt-3">
-            <h1 class="d-block text-center">Project backers:</h1>
-            <h3 class="text-center">Made by Karina & Yifei with <span class="red-heart">&hearts;</span></h3>
+            <h1 class="d-block text-center text-title">Project backers:</h1>
+            <h3 class="text-center text-light">Made by Karina & Yifei with <span class="red-heart">&hearts;</span></h3>
             <div id="about-karina" class="backer-info mb-5">
                 <div class="avatar-container rounded rounded-circle">
                     <img class="rounded rounded-circle" src="./assets/img/avatar-karina.png">
                 </div>
-                <p>
+                <p class="text-light">
                     Description about Karina.....
                 </p>
 
@@ -85,9 +85,23 @@
                 <div class="avatar-container rounded rounded-circle">
                     <img class="rounded rounded-circle" src="./assets/img/avatar-yifei.png">
                 </div>
-                <p>
-                    Description about Yifei.....
-                </p>
+                <div>
+                    <p class="text-light">
+                        I am a telecom engineer graduated in UPC (Universitat Politècnica de Catalunya). I love computer science and programming. 
+                        Currently I work as a front-end web developer using Javascript (ES6) and REACT. I am trying to apply TDD in all my projects in order to improvce the code quality and reduce bugs. 
+                    </p>
+                    <p class="text-light">
+                        In my personal life, I am a jazz enthusiast, I love broadway musicals and I am also a amateur jazz dancer. 
+                        I also enjoy playing board games with my friends and finding nice restaruantes in Barcelona. 
+                    </p>
+                    <p class="text-light">
+                        Find my other projects <a href="https://github.com/Yifei-G?tab=repositories" target="_blank">here</a>
+                    </p>
+                    <p class="text-light">
+                        Contact me on <a href="https://www.linkedin.com/in/yifei-ge-2021/" target="_blank">Linkedin</a>
+                    </p>
+                </div>
+
 
 
             </div>
