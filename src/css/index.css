@@ -231,7 +231,10 @@
       align-items: center;
       width: 100%;
       height: 900px;
+      max-height: 100vw;
       background-image: url("../assets/img/cinema.jpg");
+      background-position: center;
+      justify-content: space-around;
   }
 
   .text-title{
@@ -243,8 +246,13 @@
       font-family: 'Bungee Shade', cursive;
       text-align: center;
       color: rgb(250, 223, 103);
-      font-size: 200px;
-  }
+      font-size: 10vw;
+/*       font-size: 200px;
+ */  }
+
+    img.deadpool{
+      max-width: 90vw;
+    }
 
   #text-container, #backer-container{
       width: 60%;
@@ -280,4 +288,14 @@
   }
   .red-heart{
       color: red;
+  }
+
+  @media only screen and (max-width:768px){
+    .text-title{
+      font-size: 20px;
+    }
+    
+  .backer-info{
+    flex-wrap: wrap;
+}
   }
