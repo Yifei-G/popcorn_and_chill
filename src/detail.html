@@ -34,7 +34,7 @@
     <section class="container-fluid">
       <!-- Search result modal -->
       <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-dialog modal-xl modal-dialog-scrollables">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="searchModalLabel">Search Result:</h5>
@@ -50,25 +50,27 @@
       </div>
       
       <!--Info section -->
-      <div class="row mb-3">
+      <div class="row mb-3 info-section">
+        
         <div id="data-loader" class="d-inline-flex m-auto p-5">
           <strong class="loading mr-4">Loading...</strong>
           <div class="spinner-border spinner-loader" role="status">
             <span class="sr-only">Loading...</span>
           </div>
         </div>
-        <div class="col-12 d-flex p-0 primary-container">
-          <div class="detail-poster-container mr-5">
+        <div class="col-12 d-flex primary-container p-0 ">
+          <div class="detail-poster-container">
             
           </div>
           
-          <div class="info-container ml-5">
+          <div class="info-container p-1 p-sm-5">
             
           </div>
         </div>
+        </div>
       </div>
       
-      <!--Media section-->
+       <!--Media section-->
       <div id="media-container" class="row d-none">
         <h2>Media:</h2>
         <ul class="nav nav-tabs ml-4" id="myTab" role="tablist">
@@ -111,12 +113,12 @@
       </div>
       
       <!--Similar movie section -->
-      <div class="row similar-movies-container d-none">
+      <div class="row similar-movies-container">
         <h4>You might also like:</h4>
         <div id="similar-movies" class="col-12 d-flex w-100">
           
         </div>
-      </div>
+      </div> 
     </section>
   </main>
 </body>

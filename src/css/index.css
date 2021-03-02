@@ -1,17 +1,34 @@
+@font-face {
+  font-family: 'roboto_condensedregular';
+  src: url('../assets/robotocondensed-regular-webfont.woff2') format('woff2'),
+       url('../assets/robotocondensed-regular-webfont.woff robotocondensed-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
+  font-family: 'roboto_condensedregular', sans-serif;
+}
+
+
+
+section{
+  overflow-x: hidden;
+}
+
 .movie-container{
-    width: 200px;
-    height: 250px;
     margin: 5px 20px 10px 0;
     transition: all .4s ease-out;
 }
 
+
 .movie-container:hover{
     transform: scale(1.05, 1.05) translateZ(0px) translate3d(0px, 0px, 0px);
 }
-.poster-container{
-    width: 200px;
-    height: 250px;
-}
+
+ .detail-poster-container{
+   height: 100%;
+ }
 
 .detail-poster-container img{
     height: 100%;

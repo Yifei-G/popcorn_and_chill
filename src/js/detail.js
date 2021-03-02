@@ -114,12 +114,12 @@ function displayMovie(movie){
 }
 
 function displayPlatforms(providers){
-    const platformContainer = `<div class="platform-container d-flex-block flex-wrap" ></div>`;
+    const platformContainer = `<div class="platform-container" ></div>`;
     const infoCtn = document.querySelector(".info-container");
     infoCtn.insertAdjacentHTML("beforeend", platformContainer);
     const platformTitle = `<h2>Watch Now:</h2>`;
     const platformCtn = document.querySelector(".platform-container");
-    platformCtn.insertAdjacentHTML("beforeend", platformTitle);
+     platformCtn.insertAdjacentHTML("beforeend", platformTitle);
 
     //providers are based on countries, we are only focused in US
     if(providers.US){
@@ -137,14 +137,14 @@ function displayPlatforms(providers){
             platformCtn.insertAdjacentHTML("beforeend", streamTitle);
             for(const steamPlatform of providers.US.flatrate){
                 const platformLogo = `<img class="mx-2 rounded rounded-3" src="${logoBasePath}${steamPlatform.logo_path}" alt="platform logo">`
-                platformCtn.insertAdjacentHTML("beforeend", platformLogo);
+               platformCtn.insertAdjacentHTML("beforeend", platformLogo);
             }
         }
     }
     else{
         const noPlatforms = `<h3>Sorry the movie is not available on any online platforms in the U.S</h3>`;
         platformCtn.insertAdjacentHTML("beforeend", noPlatforms);
-    }
+    } 
 
 }
 
