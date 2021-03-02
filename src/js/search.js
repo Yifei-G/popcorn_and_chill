@@ -14,13 +14,6 @@ let sanitizedInput = "";
 userInput.addEventListener("keyup", ()=>{
     userInput.value ? search.disabled = false : search.disabled = true;
 });
-
-userInput.addEventListener("click", ()=>{
-    console.log("clicked the input!!!")
-})
-
-
-
 search.addEventListener("click",(event)=>{
     //we don't want the page got reloaded after user clicks the button
     event.preventDefault();
@@ -48,7 +41,6 @@ async function searchMovies(name){
             const noResults = `<h3>Sorry, we didn't find anything</h3>`;
             searchModal.insertAdjacentHTML("beforeend", noResults);
         }
-        
     }   catch(error){
         console.log(error);
     }

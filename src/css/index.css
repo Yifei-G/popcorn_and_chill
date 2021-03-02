@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Codystar&display=swap');
 @font-face {
   font-family: 'roboto_condensedregular';
-  src: url('../assets/robotocondensed-regular-webfont.woff2') format('woff2'),
-       url('../assets/robotocondensed-regular-webfont.woff robotocondensed-regular-webfont.woff') format('woff');
+  src: url('../assets/fonts/robotocondensed/robotocondensed-regular-webfont.woff2') format('woff2'),
+       url('../assets/fonts/robotocondensed/robotocondensed-regular-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -12,9 +13,23 @@
 
 
 
-section{
+/* section{
   overflow-x: hidden;
+} */
+
+.primary-background{
+    background-color: rgb(37, 52, 71);
 }
+
+.menu-item{
+    color: #f8f9fa !important;
+    transition: color 0.7s ease-in-out;
+}
+
+.menu-item:hover{
+    color: rgb(255, 217, 132) !important;
+}
+
 
 .movie-container{
     margin: 5px 20px 10px 0;
@@ -42,6 +57,13 @@ section{
     font-size: 40px;
 }
 
+.nav-item{
+    display: flex;
+}
+
+.carousel-indicators-color{
+    background-color: rgb(255, 217, 132) !important;
+}
 .carousel-indicators{
     position: static;
 }
@@ -167,7 +189,24 @@ section{
 
   .search-input{
       background-color: transparent;
-      width: 350px !important;
+      width: 500px !important;
+      height: 50px;
+  }
+
+  .search-btn{
+      width: 50px;
+      height: 50px;
+      padding: 0;
+  }
+
+  .form-control{
+      color:snow;
+      transition: border-color 0.7s ease-in-out;
+  }
+
+  .form-control:focus{
+      border-color:rgb(255, 217, 132) !important;
+      box-shadow:none;
   }
 
   .search-input:focus{
@@ -184,4 +223,79 @@ section{
 
   input:-internal-autofill-selected{
       background-color: transparent !important; 
+  }
+
+  #about-us-header{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      height: 900px;
+      max-height: 100vw;
+      background-image: url("../assets/img/cinema.jpg");
+      background-position: center;
+      justify-content: space-around;
+  }
+
+  .text-title{
+    font-family: 'Bungee Shade', cursive;
+    color:rgb(228, 25, 25);
+  }
+
+  .about-title{
+      font-family: 'Bungee Shade', cursive;
+      text-align: center;
+      color: rgb(250, 223, 103);
+      font-size: 10vw;
+/*       font-size: 200px;
+ */  }
+
+    img.deadpool{
+      max-width: 90vw;
+    }
+
+  #text-container, #backer-container{
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
+
+  #text-container div{
+      margin: auto;
+      text-align: justify;
+  }
+
+  #text-container div p{
+      font-size: 30px;
+  }
+
+  #logo-container img{
+    width: 100px;
+  }
+
+  .avatar-container{
+    margin-right: 30px;
+  }
+
+  .avatar-container img{
+    border: 5px solid black;
+    width: 150px;
+  }
+
+  .backer-info{
+      display: flex;
+  }
+  .red-heart{
+      color: red;
+  }
+
+  @media only screen and (max-width:768px){
+    .text-title{
+      font-size: 20px;
+    }
+    
+  .backer-info{
+    flex-wrap: wrap;
+}
   }
