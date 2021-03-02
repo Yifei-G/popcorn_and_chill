@@ -16,14 +16,15 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link text-light" href="./index.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link text-light" href="./about.html">About Us</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input id="user-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button id="search" class="btn btn-outline-danger my-2 my-sm-0" data-toggle="modal" data-target="#searchModal" type="submit">Search</button>
+        <form class="form-inline my-lg-0 m-auto">
+          <input id="user-input" class="form-control mr-2 rounded rounded-pill search-input"  placeholder="find movie by name" aria-label="Search">
+          <button id="search" class="btn btn-outline-danger my-2 my-sm-0 rounded rounded-pill search-btn" disabled data-toggle="modal" data-target="#searchModal" type="submit">Search</button>
         </form>
       </div>
     </nav>
@@ -113,7 +114,7 @@
       </div>
       
       <!--Similar movie section -->
-      <div class="row similar-movies-container">
+      <div class="row similar-movies-container d-none">
         <h4>You might also like:</h4>
         <div id="similar-movies" class="col-12 d-flex w-100">
           
