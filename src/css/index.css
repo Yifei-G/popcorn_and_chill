@@ -197,7 +197,6 @@
 
   .search-input{
       background-color: transparent;
-      width: 500px !important;
       height: 50px;
   }
 
@@ -210,6 +209,14 @@
   .form-control{
       color:snow;
       transition: border-color 0.7s ease-in-out;
+      display: flex;
+      flex: 1;
+  }
+
+  .form-inline{
+    display: flex;
+    width: 100%;
+    justify-content: center;
   }
 
   .form-control:focus{
@@ -223,6 +230,10 @@
 
   .search-input:active{
       background-color: transparent;
+  }
+
+  .search-input{
+    max-width: 500px;
   }
 
   .form-control:focus{
