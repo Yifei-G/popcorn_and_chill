@@ -57,8 +57,16 @@
     font-size: 40px;
 }
 
+.navbar-nav{
+    align-items: center;
+}
+
 .nav-item{
     display: flex;
+}
+
+.close{
+    color:rgb(228, 25, 25);
 }
 
 .carousel-indicators-color{
@@ -215,8 +223,8 @@
 
   .form-inline{
     display: flex;
-    width: 100%;
-    justify-content: center;
+    width: 73%;
+    justify-content: flex-end;
   }
 
   .form-control:focus{
@@ -266,8 +274,12 @@
       text-align: center;
       color: rgb(250, 223, 103);
       font-size: 10vw;
-/*       font-size: 200px;
- */  }
+  }
+
+  .logo-img:hover{
+      animation: rubberBand;
+      animation-duration: 1s;
+  }
 
     img.deadpool{
       max-width: 90vw;
@@ -295,6 +307,11 @@
 
   .avatar-container{
     margin-right: 30px;
+  }
+
+  .avatar-container:hover{
+      animation: flip;
+      animation-duration: 1s;
   }
 
   .avatar-container img{

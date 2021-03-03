@@ -25,13 +25,9 @@ window.onload = function WindowLoad(event){
             //getting the posters
             const imgData = await request.loadData(`movie/${movieID}/images?${apiKey}&include_image_language=en,null`);
 
-            debugger;
-
             //getting the all the similar movies
             const similarMovies = await request.loadData(`movie/${movieID}/similar?${apiKey}&language=en-US&page=1`)
-            console.log(providerData);
-            console.log(videoData);
-            console.log(similarMovies);
+
             displayMovie(movieData);
             
             //we need at least 1 provider, empty results will not be displayed
@@ -69,7 +65,6 @@ function displayMovie(movie){
         const img = new Image();
         img.addEventListener('load', ()=>{
             const dominantColor = colorThief.getColor(img);
-            console.log(dominantColor);
             const [r,g,b] = dominantColor;
             //we calculate if the backgound image is dark or light
             const hsp = Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b));
