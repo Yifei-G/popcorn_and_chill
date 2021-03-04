@@ -24,3 +24,9 @@ If you want to run the project in your local machine, you can clone this reposit
 ```
 npm install
 ```
+
+Since this project contains http requests, you need to open this project in a http server. If you have python3 installed you can run the following command:
+
+```
+python3 -m http.server
+```
